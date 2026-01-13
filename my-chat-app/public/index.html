@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="login-overlay">
+        <div class="login-card">
+            <h2>Welcome</h2>
+            <p>Enter your name to start chatting</p>
+            <input type="text" id="usernameInput" placeholder="Your Name..." autocomplete="off">
+            <button id="loginBtn">Enter Chat</button>
+        </div>
+    </div>
+
+    <div class="app-container">
+        
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>Online Users</h3>
+            </div>
+            <div id="userList" class="user-list">
+                </div>
+        </div>
+
+        <div class="chat-area">
+            
+            <div class="chat-header">
+                <div class="chat-status" id="chatStatus">
+                    Select a User or Join a Group
+                </div>
+                <div class="group-controls">
+                    <input type="text" id="groupInput" placeholder="Group Name...">
+                    <button id="joinGroupBtn">Join</button>
+                    <button id="leaveGroupBtn" class="hidden">Leave</button>
+                </div>
+            </div>
+
+            <div id="messages" class="messages-feed"></div>
+
+            <div class="message-input-area">
+                <input type="text" id="msgInput" placeholder="Type your message..." disabled>
+                <button id="sendBtn" disabled>Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+:root {
+    --primary: #4f46e5; 
+    --primary-hover: #4338ca;
+    --bg-light: #f3f4f6;
+    --white: #ffffff;
+    --sidebar-bg: #1e293b;
+    --text-dark: #1f2937;
+    --msg-mine: #4f46e5;
+    --msg-other: #e5e7eb;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', sans-serif; height: 100vh; background: var(--bg-light); overflow: hidden; }
+
+#login-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    display: flex; justify-content: center; align-items: center; z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+.login-card {
+    background: white; padding: 2rem; border-radius: 12px; width: 350px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center;
+}
+.login-card h2 { margin-top: 0; color: var(--text-dark); }
+.login-card input {
+    width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd;
+    border-radius: 6px; font-size: 16px; outline: none;
+}
+.login-card button {
+    width: 100%; padding: 12px; background: var(--primary); color: white;
+    border: none; border-radius: 6px; font-size: 16px; cursor: pointer;
+    transition: background 0.2s;
+}
+.login-card button:hover { background: var(--primary-hover); }
+
+.app-container { display: flex; height: 100vh; }
+
+
+.sidebar {
+    width: 260px; background: var(--sidebar-bg); color: white;
+    display: flex; flex-direction: column; flex-shrink: 0;
+}
+.sidebar-header { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.sidebar-header h3 { margin: 0; font-size: 1.1rem; }
+.user-list { flex: 1; overflow-y: auto; padding: 10px; }
+.user-item {
+    padding: 12px; margin-bottom: 5px; border-radius: 6px; cursor: pointer;
+    transition: background 0.2s; display: flex; align-items: center;
+}
+.user-item:hover { background: rgba(255,255,255,0.1); }
+.user-item.active { background: var(--primary); font-weight: 600; }
+.user-item::before {
+    content: ''; display: inline-block; width: 8px; height: 8px;
+    background: #22c55e; border-radius: 50%; margin-right: 10px;
+}
+
+.chat-area { flex: 1; display: flex; flex-direction: column; background: white; }
+
+
+.chat-header {
+    padding: 15px 20px; border-bottom: 1px solid #e5e7eb;
+    display: flex; justify-content: space-between; align-items: center;
+    background: white;
+}
+.chat-status { font-weight: 600; color: var(--text-dark); font-size: 1.1rem; }
+.group-controls { display: flex; gap: 8px; }
+.group-controls input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; outline: none; }
+.group-controls button {
+    padding: 8px 16px; background: var(--primary); color: white;
+    border: none; border-radius: 4px; cursor: pointer;
+}
+.group-controls button.hidden { display: none; }
+#leaveGroupBtn { background: #ef4444; } 
+
+.messages-feed {
+    flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;
+    background: #f9fafb;
+}
+
+.message {
+    max-width: 70%; padding: 10px 15px; border-radius: 12px; font-size: 0.95rem;
+    line-height: 1.4; position: relative; word-wrap: break-word;
+}
+.message-meta { font-size: 0.75rem; margin-bottom: 4px; opacity: 0.8; font-weight: 600; }
+
+.msg-system {
+    align-self: center; background: rgba(0,0,0,0.05); color: #666;
+    font-size: 0.85rem; padding: 5px 12px; border-radius: 20px; font-style: italic;
+}
+.msg-incoming {
+    align-self: flex-start; background: var(--msg-other); color: #1f2937;
+    border-bottom-left-radius: 2px;
+}
+.msg-outgoing {
+    align-self: flex-end; background: var(--msg-mine); color: white;
+    border-bottom-right-radius: 2px;
+}
+.msg-private { border: 2px solid #fbbf24; } 
+
+.message-input-area {
+    padding: 20px; border-top: 1px solid #e5e7eb; background: white; display: flex; gap: 10px;
+}
+.message-input-area input {
+    flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 6px; outline: none; font-size: 1rem;
+}
+.message-input-area input:focus { border-color: var(--primary); }
+.message-input-area button {
+    padding: 0 25px; background: var(--primary); color: white; border: none;
+    border-radius: 6px; font-weight: 600; cursor: pointer;
+}
+.message-input-area button:disabled { background: #ccc; cursor: not-allowed; }
